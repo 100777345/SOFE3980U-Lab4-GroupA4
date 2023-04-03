@@ -13,6 +13,14 @@
 	<version>2.1.2.RELEASE</version>
 	<relativePath/> <!-- lookup parent from repository -->
   </parent>
+
+  <properties>
+	  <maven.compiler.target>8</maven.compiler.target>
+	  <maven.compiler.source>8</maven.compiler.source>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	  <junit.jupiter.version>5.4.0</junit.jupiter.version>
+  </properties>
+
   <dependencies>
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
@@ -31,11 +39,31 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-devtools</artifactId>
 		<optional>true</optional>
-	</dependency>
+	<!-- JUnit dependencies (Start) -->
+    </dependency>
+        <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>${junit-jupiter.version}</version>
+        <scope>test</scope>
+   	</dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-params</artifactId>
+        <version>${junit-jupiter.version}</version>
+        <scope>test</scope>
+     <!-- JUnit dependencies (End) -->
+    </dependency>
   </dependencies>
   <build>
-    <finalName>BinaryCalculatorWebapp</finalName>
 	<plugins>
+            <!-- JUnit plugin (Start) 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+            </plugin>
+             JUnit plugin (End) -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -48,5 +76,7 @@
 				</executions>
 			</plugin>
 		</plugins>
+        
+        <finalName>BinaryCalculatorWebapp</finalName>
   </build>
 </project>
