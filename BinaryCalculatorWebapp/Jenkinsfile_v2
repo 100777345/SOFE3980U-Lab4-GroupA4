@@ -10,7 +10,7 @@ pipeline {
     JENKINS_CRED = "trusty-wavelet-382216"
   }
   
-agent {
+agent any */{
     kubernetes {
 	label 'sample-app'
       defaultContainer 'jnlp'
@@ -37,7 +37,7 @@ spec:
     tty: true
 """
 }
-  }
+  }*/
   tools {
     maven 'maven' 
   }
