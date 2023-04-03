@@ -3,14 +3,14 @@ pipeline {
   tools {
     maven 'maven' 
   }
-  stages {
+  /*stages {
     stage ('Init') {
       steps {
         sh 'echo "Start of Job"'
         sh 'ls -la'
       }
     }
-   /* stage ('test') {
+    stage ('test') {
       steps {
         sh 'mvn clean test -f ./BinaryCalculatorWebapp/pom.xml'
       }
@@ -19,11 +19,11 @@ pipeline {
       steps {
         sh 'mvn package -DskipTests -f ./BinaryCalculatorWebapp/pom.xml'
       }
-    }*/
+    }
     stage ('Deploy') {
       steps {
         sh 'echo "bye bye"'
       }
     }
-  }
+  }*/
 }
