@@ -62,10 +62,9 @@ spec:
     stage('Build and push image with Container Builder') {
       steps {
         container('gcloud') {
-	withCredentials([file(credentialsId: 'key-sa', variable: 'GC_KEY')]) {
-  	sh "/builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/"
-  	}
-          sh "/builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/"
+		withCredentials([file(credentialsId: 'key-sa', variable: 'GC_KEY')]) {
+		sh("/builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/")
+		}
         }
       }
     }
