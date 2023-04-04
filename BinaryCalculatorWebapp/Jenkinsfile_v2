@@ -63,8 +63,7 @@ spec:
       steps {
         container('gcloud') {
 	withCredentials([file(credentialsId: 'key-sa', variable: 'GC_KEY')]) {
-  	sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
-  	sh("gcloud container clusters get-credentials prod --zone northamerica-northeast1-b --project ${PROJECT}")
+  	sh "/builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/"
   	}
           sh "/builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/"
         }
