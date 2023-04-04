@@ -43,10 +43,6 @@ spec:
   }
   
   stages {
-  withCredentials([file(credentialsId: 'key-sa', variable: 'GC_KEY')]) {
-  sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
-  sh("gcloud container clusters get-credentials prod --zone northamerica-northeast1-b --project ${PROJECT}")
-  }
     stage ('Init') {
       steps {
 	    checkout scm
@@ -64,6 +60,10 @@ spec:
       }
     }
     stage('Build and push image with Container Builder') {
+    withCredentials([file(credentialsId: 'key-sa', variable: 'GC_KEY')]) {
+  	sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
+  	sh("gcloud container clusters get-credentials prod --zone northamerica-northeast1-b --project ${PROJECT}")
+  	}
       steps {
         container('gcloud') {
           sh "/builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/"
