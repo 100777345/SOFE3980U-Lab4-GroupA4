@@ -41,11 +41,12 @@ spec:
   tools {
     maven 'maven' 
   }
+  
+  stages {
   withCredentials([file(credentialsId: 'key-sa', variable: 'GC_KEY')]) {
   sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
   sh("gcloud container clusters get-credentials prod --zone northamerica-northeast1-b --project ${PROJECT}")
   }
-  stages {
     stage ('Init') {
       steps {
 	    checkout scm
