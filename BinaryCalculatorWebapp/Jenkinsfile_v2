@@ -67,6 +67,14 @@ spec:
     		sh("/builder/google-cloud-sdk/bin/gcloud container clusters get-credentials sofe3980u --zone northamerica-northeast1-b --project ${project}")
 		sh("/builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/")
 		}
+		step([
+                $class: 'KubernetesEngineBuilder',
+                projectId: 'poetic-dreamer-382621',
+                clusterName: 'sofe3980u',
+                location: 'northamerica-northeast1-b',
+                manifestPattern: 'manifest.yaml',
+                credentialsId: 'key-sa',
+                verifyDeployments: true])
         }
       }
     }
