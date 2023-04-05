@@ -67,9 +67,6 @@ spec:
     		sh("/builder/google-cloud-sdk/bin/gcloud container clusters get-credentials sofe3980u --zone northamerica-northeast1-b --project ${project}")
 		sh("/builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/")
 		}
-	container('kubectl') {
-		sh 'kubectl cluster-info'
-		}
         }
       }
     }
