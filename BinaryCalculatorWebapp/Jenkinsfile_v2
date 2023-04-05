@@ -68,7 +68,7 @@ spec:
 		sh("/builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/")
 		}
 	container('kubectl') {
-		sh("cluster-info")
+		sh 'kubectl cluster-info'
 		}
         }
       }
