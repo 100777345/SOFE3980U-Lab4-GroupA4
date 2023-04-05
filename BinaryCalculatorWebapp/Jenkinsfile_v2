@@ -66,6 +66,7 @@ spec:
 		sh("/builder/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=${GC_KEY}")
     		sh("/builder/google-cloud-sdk/bin/gcloud container clusters get-credentials sofe3980u --zone northamerica-northeast1-b --project ${project}")
 		sh("/builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/")
+		sh("/builder/google-cloud-sdk/bin/kubectl cluster-info")
 		}
         }
       }
