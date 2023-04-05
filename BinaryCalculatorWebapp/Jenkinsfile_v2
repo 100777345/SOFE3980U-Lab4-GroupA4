@@ -66,6 +66,8 @@ spec:
 		sh("/builder/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=${GC_KEY}")
     		sh("/builder/google-cloud-sdk/bin/gcloud container clusters get-credentials sofe3980u --zone northamerica-northeast1-b --project ${project}")
 		sh("/builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/")
+		sh("kubectl create deployment binarycalculator-deployment --image gcr.io/poetic-dreamer-382621/binary-calculator2 --port=8080")
+		sh("kubectl expose deployment binarycalculator-deployment --type=LoadBalancer --name=binarycalculator-service)
 		}
         }
       }
